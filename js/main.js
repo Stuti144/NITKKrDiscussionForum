@@ -33,7 +33,7 @@ function fetchData(elem){
         });
 
         //redirect main page to question page
-        var url = "question.html?topicId=" + topicId + "&=topicName=" + topics;
+        var url = "AnswerPage.html?topicId=" + topicId + "&=topicName=" + topics;
         window.location.href = url;
     
     })
