@@ -13,12 +13,14 @@ for(var i=0;i<parameterArray.length;i++){
 	}
 }
 }
-console.log("h")
-var pageNum = ParseURL('page')
-console.log(pageNum);
+var myURL= new URL(window.location.href);
+//console.log(myURL);
 
+//displaying question
+var questionid=myURL.searchParams.get("questionId");
+console.log(questionid);
 //Adding data to database
-var answersid,answers,questionid=12,p;
+var answersid,answers,p;
 firebase.database().ref('answerset/').once('value').then(function(snapshot){
 	if(snapshot.exists()){
        snapshot.forEach(function(childSnapshot) {
@@ -35,15 +37,18 @@ function Ready(){
 }
  document.getElementById('insertanswer').onclick=function(){
  	answersid=p+1;
- 	console.log(answersid)
+ 	//console.log(answersid)
  	Ready();
  	
 	firebase.database().ref('answerset/'+answersid).set({
 		QuestionID : questionid,
 		AnswerID : answersid,
-		Answer : answers
+		Answer : answers,
+		Likes: 0,
+		Dislikes: 0
 	});
  	document.getElementById('answer').value="";
+	 window.location.href = window.location.href ;
 }
 
 //Searching and displaying answer using answerid

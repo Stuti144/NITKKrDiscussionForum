@@ -1,4 +1,3 @@
-
 // function to update views on main page
 for(var i=1;i<=6;i++)
 {
@@ -33,7 +32,7 @@ function fetchData(elem){
         });
 
         //redirect main page to question page
-        var url = "AnswerPage.html?topicId=" + topicId + "&=topicName=" + topics;
+        var url = "QuestionPage.html?topicId=" + topicId + "&topicName=" + topics;
         window.location.href = url;
     
     })
